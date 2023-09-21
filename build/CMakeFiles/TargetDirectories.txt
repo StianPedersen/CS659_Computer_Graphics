@@ -1,0 +1,3 @@
+/home/stian/repos/computergraphics/build/CMakeFiles/0_Bootstrap.dir
+/home/stian/repos/computergraphics/build/CMakeFiles/edit_cache.dir
+/home/stian/repos/computergraphics/build/CMakeFiles/rebuild_cache.dir
