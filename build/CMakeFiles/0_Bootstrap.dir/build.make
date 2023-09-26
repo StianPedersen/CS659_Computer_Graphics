@@ -69,28 +69,28 @@ include CMakeFiles/0_Bootstrap.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/0_Bootstrap.dir/flags.make
 
-CMakeFiles/0_Bootstrap.dir/Bootstrap.o: CMakeFiles/0_Bootstrap.dir/flags.make
-CMakeFiles/0_Bootstrap.dir/Bootstrap.o: ../Bootstrap.cpp
-CMakeFiles/0_Bootstrap.dir/Bootstrap.o: CMakeFiles/0_Bootstrap.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/stian/repos/computergraphics/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/0_Bootstrap.dir/Bootstrap.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/0_Bootstrap.dir/Bootstrap.o -MF CMakeFiles/0_Bootstrap.dir/Bootstrap.o.d -o CMakeFiles/0_Bootstrap.dir/Bootstrap.o -c /home/stian/repos/computergraphics/Bootstrap.cpp
+CMakeFiles/0_Bootstrap.dir/src/Bootstrap.o: CMakeFiles/0_Bootstrap.dir/flags.make
+CMakeFiles/0_Bootstrap.dir/src/Bootstrap.o: ../src/Bootstrap.cpp
+CMakeFiles/0_Bootstrap.dir/src/Bootstrap.o: CMakeFiles/0_Bootstrap.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/stian/repos/computergraphics/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/0_Bootstrap.dir/src/Bootstrap.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/0_Bootstrap.dir/src/Bootstrap.o -MF CMakeFiles/0_Bootstrap.dir/src/Bootstrap.o.d -o CMakeFiles/0_Bootstrap.dir/src/Bootstrap.o -c /home/stian/repos/computergraphics/src/Bootstrap.cpp
 
-CMakeFiles/0_Bootstrap.dir/Bootstrap.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/0_Bootstrap.dir/Bootstrap.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/stian/repos/computergraphics/Bootstrap.cpp > CMakeFiles/0_Bootstrap.dir/Bootstrap.i
+CMakeFiles/0_Bootstrap.dir/src/Bootstrap.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/0_Bootstrap.dir/src/Bootstrap.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/stian/repos/computergraphics/src/Bootstrap.cpp > CMakeFiles/0_Bootstrap.dir/src/Bootstrap.i
 
-CMakeFiles/0_Bootstrap.dir/Bootstrap.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/0_Bootstrap.dir/Bootstrap.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/stian/repos/computergraphics/Bootstrap.cpp -o CMakeFiles/0_Bootstrap.dir/Bootstrap.s
+CMakeFiles/0_Bootstrap.dir/src/Bootstrap.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/0_Bootstrap.dir/src/Bootstrap.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/stian/repos/computergraphics/src/Bootstrap.cpp -o CMakeFiles/0_Bootstrap.dir/src/Bootstrap.s
 
 # Object files for target 0_Bootstrap
 0_Bootstrap_OBJECTS = \
-"CMakeFiles/0_Bootstrap.dir/Bootstrap.o"
+"CMakeFiles/0_Bootstrap.dir/src/Bootstrap.o"
 
 # External object files for target 0_Bootstrap
 0_Bootstrap_EXTERNAL_OBJECTS =
 
-0_Bootstrap: CMakeFiles/0_Bootstrap.dir/Bootstrap.o
+0_Bootstrap: CMakeFiles/0_Bootstrap.dir/src/Bootstrap.o
 0_Bootstrap: CMakeFiles/0_Bootstrap.dir/build.make
 0_Bootstrap: /usr/local/lib/libOgreBites.so.14.1
 0_Bootstrap: /usr/local/lib/libOgreOverlay.so.14.1

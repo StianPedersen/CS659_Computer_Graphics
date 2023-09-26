@@ -129,20 +129,63 @@ depend:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/0_Bootstrap.dir/build.make CMakeFiles/0_Bootstrap.dir/build
 .PHONY : 0_Bootstrap/fast
 
+#=============================================================================
+# Target rules for targets named OgreBasicApp
+
+# Build rule for target.
+OgreBasicApp: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 OgreBasicApp
+.PHONY : OgreBasicApp
+
+# fast build rule for target.
+OgreBasicApp/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OgreBasicApp.dir/build.make CMakeFiles/OgreBasicApp.dir/build
+.PHONY : OgreBasicApp/fast
+
 # target to build an object file
-Bootstrap.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/0_Bootstrap.dir/build.make CMakeFiles/0_Bootstrap.dir/Bootstrap.o
-.PHONY : Bootstrap.o
+src/BaseApplication.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OgreBasicApp.dir/build.make CMakeFiles/OgreBasicApp.dir/src/BaseApplication.o
+.PHONY : src/BaseApplication.o
 
 # target to preprocess a source file
-Bootstrap.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/0_Bootstrap.dir/build.make CMakeFiles/0_Bootstrap.dir/Bootstrap.i
-.PHONY : Bootstrap.i
+src/BaseApplication.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OgreBasicApp.dir/build.make CMakeFiles/OgreBasicApp.dir/src/BaseApplication.i
+.PHONY : src/BaseApplication.i
 
 # target to generate assembly for a file
-Bootstrap.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/0_Bootstrap.dir/build.make CMakeFiles/0_Bootstrap.dir/Bootstrap.s
-.PHONY : Bootstrap.s
+src/BaseApplication.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OgreBasicApp.dir/build.make CMakeFiles/OgreBasicApp.dir/src/BaseApplication.s
+.PHONY : src/BaseApplication.s
+
+# target to build an object file
+src/Bootstrap.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/0_Bootstrap.dir/build.make CMakeFiles/0_Bootstrap.dir/src/Bootstrap.o
+.PHONY : src/Bootstrap.o
+
+# target to preprocess a source file
+src/Bootstrap.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/0_Bootstrap.dir/build.make CMakeFiles/0_Bootstrap.dir/src/Bootstrap.i
+.PHONY : src/Bootstrap.i
+
+# target to generate assembly for a file
+src/Bootstrap.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/0_Bootstrap.dir/build.make CMakeFiles/0_Bootstrap.dir/src/Bootstrap.s
+.PHONY : src/Bootstrap.s
+
+# target to build an object file
+src/TutorialApplication.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OgreBasicApp.dir/build.make CMakeFiles/OgreBasicApp.dir/src/TutorialApplication.o
+.PHONY : src/TutorialApplication.o
+
+# target to preprocess a source file
+src/TutorialApplication.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OgreBasicApp.dir/build.make CMakeFiles/OgreBasicApp.dir/src/TutorialApplication.i
+.PHONY : src/TutorialApplication.i
+
+# target to generate assembly for a file
+src/TutorialApplication.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OgreBasicApp.dir/build.make CMakeFiles/OgreBasicApp.dir/src/TutorialApplication.s
+.PHONY : src/TutorialApplication.s
 
 # Help Target
 help:
@@ -153,9 +196,16 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... 0_Bootstrap"
-	@echo "... Bootstrap.o"
-	@echo "... Bootstrap.i"
-	@echo "... Bootstrap.s"
+	@echo "... OgreBasicApp"
+	@echo "... src/BaseApplication.o"
+	@echo "... src/BaseApplication.i"
+	@echo "... src/BaseApplication.s"
+	@echo "... src/Bootstrap.o"
+	@echo "... src/Bootstrap.i"
+	@echo "... src/Bootstrap.s"
+	@echo "... src/TutorialApplication.o"
+	@echo "... src/TutorialApplication.i"
+	@echo "... src/TutorialApplication.s"
 .PHONY : help
 
 

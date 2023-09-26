@@ -223,6 +223,15 @@ LIBRARY_OUTPUT_PATH:PATH=
 OGRE_DIR:PATH=/usr/local/lib/OGRE/cmake
 
 //Value Computed by CMake
+OgreBasicApp_BINARY_DIR:STATIC=/home/stian/repos/computergraphics/build
+
+//Value Computed by CMake
+OgreBasicApp_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+OgreBasicApp_SOURCE_DIR:STATIC=/home/stian/repos/computergraphics
+
+//Value Computed by CMake
 Project_BINARY_DIR:STATIC=/home/stian/repos/computergraphics/build
 
 //Value Computed by CMake

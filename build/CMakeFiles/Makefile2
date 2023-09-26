@@ -64,6 +64,7 @@ CMAKE_BINARY_DIR = /home/stian/repos/computergraphics/build
 
 # The main recursive "all" target.
 all: CMakeFiles/0_Bootstrap.dir/all
+all: CMakeFiles/OgreBasicApp.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -72,6 +73,7 @@ preinstall:
 
 # The main recursive "clean" target.
 clean: CMakeFiles/0_Bootstrap.dir/clean
+clean: CMakeFiles/OgreBasicApp.dir/clean
 .PHONY : clean
 
 #=============================================================================
@@ -99,6 +101,32 @@ CMakeFiles/0_Bootstrap.dir/rule: cmake_check_build_system
 CMakeFiles/0_Bootstrap.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/0_Bootstrap.dir/build.make CMakeFiles/0_Bootstrap.dir/clean
 .PHONY : CMakeFiles/0_Bootstrap.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/OgreBasicApp.dir
+
+# All Build rule for target.
+CMakeFiles/OgreBasicApp.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OgreBasicApp.dir/build.make CMakeFiles/OgreBasicApp.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OgreBasicApp.dir/build.make CMakeFiles/OgreBasicApp.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/stian/repos/computergraphics/build/CMakeFiles --progress-num=3,4,5 "Built target OgreBasicApp"
+.PHONY : CMakeFiles/OgreBasicApp.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/OgreBasicApp.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/stian/repos/computergraphics/build/CMakeFiles 3
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/OgreBasicApp.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/stian/repos/computergraphics/build/CMakeFiles 0
+.PHONY : CMakeFiles/OgreBasicApp.dir/rule
+
+# Convenience name for target.
+OgreBasicApp: CMakeFiles/OgreBasicApp.dir/rule
+.PHONY : OgreBasicApp
+
+# clean rule for target.
+CMakeFiles/OgreBasicApp.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OgreBasicApp.dir/build.make CMakeFiles/OgreBasicApp.dir/clean
+.PHONY : CMakeFiles/OgreBasicApp.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

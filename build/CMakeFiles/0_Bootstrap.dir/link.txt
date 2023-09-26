@@ -1,1 +1,1 @@
-/usr/bin/c++ -rdynamic CMakeFiles/0_Bootstrap.dir/Bootstrap.o -o 0_Bootstrap   -L/usr/local/lib  -Wl,-rpath,/usr/local/lib /usr/local/lib/libOgreBites.so.14.1 /usr/local/lib/libOgreOverlay.so.14.1 /usr/local/lib/libOgreRTShaderSystem.so.14.1 /usr/local/lib/libOgreMain.so.14.1 -lpthread 
+/usr/bin/c++ -rdynamic CMakeFiles/0_Bootstrap.dir/src/Bootstrap.o -o 0_Bootstrap   -L/usr/local/lib  -Wl,-rpath,/usr/local/lib /usr/local/lib/libOgreBites.so.14.1 /usr/local/lib/libOgreOverlay.so.14.1 /usr/local/lib/libOgreRTShaderSystem.so.14.1 /usr/local/lib/libOgreMain.so.14.1 -lpthread 

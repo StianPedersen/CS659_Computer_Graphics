@@ -1,0 +1,7 @@
+lab1_Task_1
+    I did not have to do task_1 since I am programming in Linux OS and had to create the project files in 
+    a different manner.
+
+Lab1_Task_2
+    The screenshot of the Ogre can be found in Ogre_Screenshot_StianPedersen.png.
+    The code added to generate the Ogre can be foubd in Code_Snippet_StianPedersen.png

@@ -8,7 +8,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/stian/repos/computergraphics/src/Bootstrap.cpp" "CMakeFiles/0_Bootstrap.dir/src/Bootstrap.o" "gcc" "CMakeFiles/0_Bootstrap.dir/src/Bootstrap.o.d"
+  "/home/stian/repos/computergraphics/src/BaseApplication.cpp" "CMakeFiles/OgreBasicApp.dir/src/BaseApplication.o" "gcc" "CMakeFiles/OgreBasicApp.dir/src/BaseApplication.o.d"
+  "/home/stian/repos/computergraphics/src/TutorialApplication.cpp" "CMakeFiles/OgreBasicApp.dir/src/TutorialApplication.o" "gcc" "CMakeFiles/OgreBasicApp.dir/src/TutorialApplication.o.d"
   )
 
 # Targets to which this target links.
