@@ -64,6 +64,7 @@ CMAKE_BINARY_DIR = /home/stian/repos/computergraphics/build
 
 # The main recursive "all" target.
 all: CMakeFiles/0_Bootstrap.dir/all
+all: CMakeFiles/Tutorial_2.dir/all
 all: CMakeFiles/OgreBasicApp.dir/all
 .PHONY : all
 
@@ -73,6 +74,7 @@ preinstall:
 
 # The main recursive "clean" target.
 clean: CMakeFiles/0_Bootstrap.dir/clean
+clean: CMakeFiles/Tutorial_2.dir/clean
 clean: CMakeFiles/OgreBasicApp.dir/clean
 .PHONY : clean
 
@@ -101,6 +103,32 @@ CMakeFiles/0_Bootstrap.dir/rule: cmake_check_build_system
 CMakeFiles/0_Bootstrap.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/0_Bootstrap.dir/build.make CMakeFiles/0_Bootstrap.dir/clean
 .PHONY : CMakeFiles/0_Bootstrap.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/Tutorial_2.dir
+
+# All Build rule for target.
+CMakeFiles/Tutorial_2.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tutorial_2.dir/build.make CMakeFiles/Tutorial_2.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tutorial_2.dir/build.make CMakeFiles/Tutorial_2.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/stian/repos/computergraphics/build/CMakeFiles --progress-num=6,7 "Built target Tutorial_2"
+.PHONY : CMakeFiles/Tutorial_2.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/Tutorial_2.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/stian/repos/computergraphics/build/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/Tutorial_2.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/stian/repos/computergraphics/build/CMakeFiles 0
+.PHONY : CMakeFiles/Tutorial_2.dir/rule
+
+# Convenience name for target.
+Tutorial_2: CMakeFiles/Tutorial_2.dir/rule
+.PHONY : Tutorial_2
+
+# clean rule for target.
+CMakeFiles/Tutorial_2.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tutorial_2.dir/build.make CMakeFiles/Tutorial_2.dir/clean
+.PHONY : CMakeFiles/Tutorial_2.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/OgreBasicApp.dir

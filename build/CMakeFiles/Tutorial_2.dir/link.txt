@@ -1,0 +1,1 @@
+/usr/bin/c++ -rdynamic CMakeFiles/Tutorial_2.dir/src/BasicTutorial_2.o -o Tutorial_2   -L/usr/local/lib  -Wl,-rpath,/usr/local/lib /usr/local/lib/libOgreBites.so.14.1 /usr/local/lib/libOgreOverlay.so.14.1 /usr/local/lib/libOgreRTShaderSystem.so.14.1 /usr/local/lib/libOgreMain.so.14.1 -lpthread 

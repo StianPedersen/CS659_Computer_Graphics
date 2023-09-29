@@ -130,6 +130,19 @@ depend:
 .PHONY : 0_Bootstrap/fast
 
 #=============================================================================
+# Target rules for targets named Tutorial_2
+
+# Build rule for target.
+Tutorial_2: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Tutorial_2
+.PHONY : Tutorial_2
+
+# fast build rule for target.
+Tutorial_2/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tutorial_2.dir/build.make CMakeFiles/Tutorial_2.dir/build
+.PHONY : Tutorial_2/fast
+
+#=============================================================================
 # Target rules for targets named OgreBasicApp
 
 # Build rule for target.
@@ -156,6 +169,21 @@ src/BaseApplication.i:
 src/BaseApplication.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/OgreBasicApp.dir/build.make CMakeFiles/OgreBasicApp.dir/src/BaseApplication.s
 .PHONY : src/BaseApplication.s
+
+# target to build an object file
+src/BasicTutorial_2.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tutorial_2.dir/build.make CMakeFiles/Tutorial_2.dir/src/BasicTutorial_2.o
+.PHONY : src/BasicTutorial_2.o
+
+# target to preprocess a source file
+src/BasicTutorial_2.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tutorial_2.dir/build.make CMakeFiles/Tutorial_2.dir/src/BasicTutorial_2.i
+.PHONY : src/BasicTutorial_2.i
+
+# target to generate assembly for a file
+src/BasicTutorial_2.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tutorial_2.dir/build.make CMakeFiles/Tutorial_2.dir/src/BasicTutorial_2.s
+.PHONY : src/BasicTutorial_2.s
 
 # target to build an object file
 src/Bootstrap.o:
@@ -197,9 +225,13 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... 0_Bootstrap"
 	@echo "... OgreBasicApp"
+	@echo "... Tutorial_2"
 	@echo "... src/BaseApplication.o"
 	@echo "... src/BaseApplication.i"
 	@echo "... src/BaseApplication.s"
+	@echo "... src/BasicTutorial_2.o"
+	@echo "... src/BasicTutorial_2.i"
+	@echo "... src/BasicTutorial_2.s"
 	@echo "... src/Bootstrap.o"
 	@echo "... src/Bootstrap.i"
 	@echo "... src/Bootstrap.s"
