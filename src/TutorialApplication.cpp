@@ -41,14 +41,35 @@ TutorialApplication::~TutorialApplication(void)
 //-------------------------------------------------------------------------------------
 void TutorialApplication::createScene(void)
 {
-    Light *light = mSceneMgr->createLight("MainLight");
-    SceneNode *lightNode = mSceneMgr->getRootSceneNode()->createChildSceneNode();
-    lightNode->attachObject(light);
-    lightNode->setPosition(20, 80, 50);
 
+    Light *light = mSceneMgr->createLight("MainLight");                           // Create a light
+    SceneNode *lightNode = mSceneMgr->getRootSceneNode()->createChildSceneNode(); // Create lightnode
+    lightNode->attachObject(light);                                               // Attach light to lightnode
+    lightNode->setPosition(20, 80, 50);                                           // Set the lights position
+
+    // Entity 1
     Entity *ogreEntity = mSceneMgr->createEntity("ogrehead.mesh");
     SceneNode *ogreNode = mSceneMgr->getRootSceneNode()->createChildSceneNode();
     ogreNode->attachObject(ogreEntity);
+
+    // Entity 2
+    Entity *ogreEntity2 = mSceneMgr->createEntity("ogrehead.mesh");
+    Ogre::SceneNode *ogreNode2 = ogreNode->createChildSceneNode(Ogre::Vector3(84, 48, 0)); // Attach another entity to the first ogre node
+    ogreNode2->attachObject(ogreEntity2);
+
+    // Entity 3
+    Entity *ogreEntity3 = mSceneMgr->createEntity("ogrehead.mesh");
+    SceneNode *ogreNode3 = mSceneMgr->getRootSceneNode()->createChildSceneNode();
+    ogreNode3->setPosition(0, 104, 0);
+    ogreNode3->setScale(2, 1.2, 1);
+    ogreNode3->attachObject(ogreEntity3);
+
+    // Entity 4
+    Entity *ogreEntity4 = mSceneMgr->createEntity("ogrehead.mesh");
+    SceneNode *ogreNode4 = mSceneMgr->getRootSceneNode()->createChildSceneNode();
+    ogreNode4->setPosition(-84, 48, 0);
+    ogreNode4->roll(Degree(-90));
+    ogreNode4->attachObject(ogreEntity4);
 }
 
 //-------------------------------------------------------------------------------------
