@@ -143,31 +143,31 @@ Tutorial_2/fast:
 .PHONY : Tutorial_2/fast
 
 #=============================================================================
-# Target rules for targets named OgreBasicApp
+# Target rules for targets named a.out
 
 # Build rule for target.
-OgreBasicApp: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 OgreBasicApp
-.PHONY : OgreBasicApp
+a.out: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 a.out
+.PHONY : a.out
 
 # fast build rule for target.
-OgreBasicApp/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/OgreBasicApp.dir/build.make CMakeFiles/OgreBasicApp.dir/build
-.PHONY : OgreBasicApp/fast
+a.out/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/a.out.dir/build.make CMakeFiles/a.out.dir/build
+.PHONY : a.out/fast
 
 # target to build an object file
 src/BaseApplication.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/OgreBasicApp.dir/build.make CMakeFiles/OgreBasicApp.dir/src/BaseApplication.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/a.out.dir/build.make CMakeFiles/a.out.dir/src/BaseApplication.o
 .PHONY : src/BaseApplication.o
 
 # target to preprocess a source file
 src/BaseApplication.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/OgreBasicApp.dir/build.make CMakeFiles/OgreBasicApp.dir/src/BaseApplication.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/a.out.dir/build.make CMakeFiles/a.out.dir/src/BaseApplication.i
 .PHONY : src/BaseApplication.i
 
 # target to generate assembly for a file
 src/BaseApplication.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/OgreBasicApp.dir/build.make CMakeFiles/OgreBasicApp.dir/src/BaseApplication.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/a.out.dir/build.make CMakeFiles/a.out.dir/src/BaseApplication.s
 .PHONY : src/BaseApplication.s
 
 # target to build an object file
@@ -202,17 +202,17 @@ src/Bootstrap.s:
 
 # target to build an object file
 src/TutorialApplication.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/OgreBasicApp.dir/build.make CMakeFiles/OgreBasicApp.dir/src/TutorialApplication.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/a.out.dir/build.make CMakeFiles/a.out.dir/src/TutorialApplication.o
 .PHONY : src/TutorialApplication.o
 
 # target to preprocess a source file
 src/TutorialApplication.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/OgreBasicApp.dir/build.make CMakeFiles/OgreBasicApp.dir/src/TutorialApplication.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/a.out.dir/build.make CMakeFiles/a.out.dir/src/TutorialApplication.i
 .PHONY : src/TutorialApplication.i
 
 # target to generate assembly for a file
 src/TutorialApplication.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/OgreBasicApp.dir/build.make CMakeFiles/OgreBasicApp.dir/src/TutorialApplication.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/a.out.dir/build.make CMakeFiles/a.out.dir/src/TutorialApplication.s
 .PHONY : src/TutorialApplication.s
 
 # Help Target
@@ -224,8 +224,8 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... 0_Bootstrap"
-	@echo "... OgreBasicApp"
 	@echo "... Tutorial_2"
+	@echo "... a.out"
 	@echo "... src/BaseApplication.o"
 	@echo "... src/BaseApplication.i"
 	@echo "... src/BaseApplication.s"

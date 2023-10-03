@@ -28,87 +28,71 @@ THE SOFTWARE
 
 #include "TutorialApplication.h"
 
+
 //-------------------------------------------------------------------------------------
 TutorialApplication::TutorialApplication()
 {
-	count = 1;
 }
+
 
 //-------------------------------------------------------------------------------------
 TutorialApplication::~TutorialApplication(void)
 {
 }
 
-bool TutorialApplication::keyPressed(const KeyboardEvent &evt)
-{
-	if (evt.keysym.sym == SDLK_F1)
-	{
-		if (count <= 7)
-		{
-			head_nodes[count]->attachObject(ogre_heads[count]);
-			head_nodes[count]->translate(Vector3(20 + (count * 10), 0, 0));
-			++count;
-		}
-		else
-		{
-			std::cerr << "To many heads, only 8 on the same time" << std::endl;
-		}
-	}
-	if (evt.keysym.sym == SDLK_F2)
-	{
-		if (count > 1)
-		{
-			--count;
-			head_nodes[count]->detachObject(ogre_heads[count]);
-		}
-		else
-		{
-			std::cerr << "You must haae 1 ogrehead" << std::endl;
-		}
-	}
-	std::cout << "Count: " << count << std::endl;
-	return true;
-}
+
 //-------------------------------------------------------------------------------------
 void TutorialApplication::createScene(void)
 {
+	// Create your scene here :)
 	// Create entities
+	Entity* ogreHead1 = mSceneMgr->createEntity("Head1", "ogrehead.mesh");
+	Entity* ogreHead2 = mSceneMgr->createEntity("Head2", "ogrehead.mesh");
 
-	for (int i = 0; i <= 7; i++)
-	{
-		ogre_heads.push_back(mSceneMgr->createEntity("Head" + std::to_string(i), "ogrehead.mesh"));
-		head_nodes.push_back(mSceneMgr->getRootSceneNode()->createChildSceneNode("HeadNode" + std::to_string(i)));
-	}
-	std::cout << ogre_heads.size() << std::endl;
-	head_nodes[0]->attachObject(ogre_heads[0]);
+	// Create SceneNodes and attach the entities to them
+	SceneNode* headNode1 = mSceneMgr->getRootSceneNode()->createChildSceneNode("HeadNode1");
+	SceneNode* headNode2 = mSceneMgr->getRootSceneNode()->createChildSceneNode("HeadNode2");
+	headNode1->attachObject(ogreHead1);
+	headNode2->attachObject(ogreHead2);
 
-	head_nodes[0]->translate(Vector3(20, 0, 0));
+	// Set transformations
+	headNode1->scale(Vector3(1, 1, 1));
+	headNode1->rotate(Vector3(0, 1, 0), Degree(-90));
+	headNode1->translate(Vector3(20, 0, -20));
+
+	headNode2->scale(Vector3(1, 1, 0.5));
+	headNode2->rotate(Vector3(0, 1, 0), Degree(90));
+	headNode2->translate(Vector3(-10, 0, 10));
+	headNode2->rotate(Vector3(1, 0, 0), Degree(90));
+	headNode2->scale(Vector3(1, 0.5, 1));
+	headNode2->translate(Vector3(0, 0, 30));
 
 	// Set the scene's ambient light
 	mSceneMgr->setAmbientLight(ColourValue(0.5, 0.5, 0.5));
 
 	// Create a light and set its position
-	Light *light = mSceneMgr->createLight("MainLight");
-	SceneNode *lightNode = mSceneMgr->getRootSceneNode()->createChildSceneNode("LightNode");
+	Light* light = mSceneMgr->createLight("MainLight");
+	SceneNode* lightNode = mSceneMgr->getRootSceneNode()->createChildSceneNode("LightNode");
 	lightNode->attachObject(light);
 	lightNode->setPosition(20, 80, 50);
 }
 
+
 //-------------------------------------------------------------------------------------
 int main(int argc, char **argv)
 {
-	try
-	{
-		TutorialApplication app;
-		app.initApp();
+    try
+    {
+    	TutorialApplication app;
+        app.initApp();
 		app.go();
-		app.closeApp();
-	}
-	catch (const std::exception &e)
-	{
-		std::cerr << "Error occurred during execution: " << e.what() << '\n';
-		return 1;
-	}
+        app.closeApp();
+    }
+    catch (const std::exception& e)
+    {
+        std::cerr << "Error occurred during execution: " << e.what() << '\n';
+        return 1;
+    }
 
-	return 0;
+    return 0;
 }

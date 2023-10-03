@@ -49,5 +49,5 @@ set(CMAKE_MAKEFILE_PRODUCTS
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/0_Bootstrap.dir/DependInfo.cmake"
   "CMakeFiles/Tutorial_2.dir/DependInfo.cmake"
-  "CMakeFiles/OgreBasicApp.dir/DependInfo.cmake"
+  "CMakeFiles/a.out.dir/DependInfo.cmake"
   )

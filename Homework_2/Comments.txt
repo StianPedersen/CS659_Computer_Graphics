@@ -1,0 +1,6 @@
+This zip contains all the files modified to solve lab_2.
+
+- TutorialApplication.h: Added line 44-46 to be able to reach the variables from member functions.
+- TutorialApplication.cpp: Main file modified.
+- 1_head.png: Shows what happens if you decrease to 1x head and try to remove the last head (see terminal output).
+- 8_head.png: Shows what happens if you add 8x heads and try to add 1x more.
