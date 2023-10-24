@@ -30,21 +30,32 @@ THE SOFTWARE
 
 //-------------------------------------------------------------------------------------
 TutorialApplication::TutorialApplication() : mCurrSubMesh(0),
-											 mCurrVertex(0)
+											 mCurrVertex(0),
+											 mMesh(nullptr)
 {
-	count = 1;
-	selected_head = 0;
 }
 
 //-------------------------------------------------------------------------------------
 TutorialApplication::~TutorialApplication(void)
 {
 }
-void TutorialApplication::change_current_mesh()
+
+//-------------------------------------------------------------------------------------
+void TutorialApplication::createScene(void)
 {
-	std::cout << "Current selected head number: " << selected_head << std::endl;
-	mMesh = ogre_heads[selected_head]->getMesh();
+	// Create your scene here :)
+	// Create entities
+	Entity *ogreHead = mSceneMgr->createEntity("Head", "ogrehead.mesh");
+
+	// Create SceneNodes and attach the entities to them
+	SceneNode *headNode = mSceneMgr->getRootSceneNode()->createChildSceneNode("HeadNode");
+	headNode->attachObject(ogreHead);
+
+	// Get vertex position element for each sub-mesh
+	mMesh = ogreHead->getMesh();
+
 	int nSubMesh = mMesh->getNumSubMeshes();
+
 	mVertexElePos.resize(nSubMesh, nullptr);
 	for (int nMesh = 0; nMesh < nSubMesh; ++nMesh)
 		mVertexElePos[nMesh] = mMesh->getSubMesh(nMesh)->vertexData->vertexDeclaration->findElementBySemantic(VES_POSITION);
@@ -53,12 +64,23 @@ void TutorialApplication::change_current_mesh()
 	mVertexBufPos.resize(nSubMesh, nullptr);
 	for (int nMesh = 0; nMesh < nSubMesh; ++nMesh)
 		mVertexBufPos[nMesh] = mMesh->getSubMesh(nMesh)->vertexData->vertexBufferBinding->getBuffer(mVertexElePos[nMesh]->getSource());
+
+	// Set the scene's ambient light
+	mSceneMgr->setAmbientLight(ColourValue(0.5, 0.5, 0.5));
+
+	// Create a light and set its position
+	Light *light = mSceneMgr->createLight("MainLight");
+	SceneNode *lightNode = mSceneMgr->getRootSceneNode()->createChildSceneNode("LightNode");
+	lightNode->attachObject(light);
+	lightNode->setPosition(20, 80, 50);
 }
 
+//-------------------------------------------------------------------------------------
 bool TutorialApplication::keyPressed(const KeyboardEvent &evt)
 {
 	uint8 *pVertexPtr = nullptr;
 	float *pElePtr = nullptr;
+
 	switch (evt.keysym.sym)
 	{
 	case 'm':
@@ -68,60 +90,25 @@ bool TutorialApplication::keyPressed(const KeyboardEvent &evt)
 			int nSubMesh = mMesh->getNumSubMeshes();
 			if (mCurrSubMesh < (nSubMesh - 1))
 				++mCurrSubMesh;
-
 			else
 				mCurrSubMesh = 0;
 
 			printf("The current sub-mesh index is \"%i\".\n", mCurrSubMesh);
 		}
 		break;
-	case 'h':
-		if (selected_head < (count - 1))
+	case 'n':
+		// Increment currVertex index
+		if (mMesh)
 		{
-			++selected_head;
-			change_current_mesh();
-		}
-		else
-		{
-			selected_head = 0;
-			change_current_mesh();
-		}
-		break;
-	case 'v':
-		++mCurrVertex;
-		std::cout << "Changed to vertex number " << mCurrVertex << std::endl;
-		break;
+			int nSubVertex = mMesh->getNumSubMeshes();
+			if (mCurrSubMesh < (nSubMesh - 1))
+				++mCurrSubMesh;
+			else
+				mCurrSubMesh = 0;
 
-	case SDLK_F1:
-		if (count <= 7)
-		{
-			head_nodes[count]->attachObject(ogre_heads[count]);
-			head_nodes[count]->translate(Vector3(20 + (count * 10), 0, 0));
-			++count;
-		}
-		else
-		{
-			std::cerr << "To many heads, only 8 on the same time" << std::endl;
+			printf("The current sub-mesh index is \"%i\".\n", mCurrSubMesh);
 		}
 		break;
-	case SDLK_F2:
-		if (count > 1)
-		{
-			--count;
-			head_nodes[count]->detachObject(ogre_heads[count]);
-			if (selected_head > (count - 1))
-			{
-				selected_head = (count - 1);
-				std::cerr << "Your currently selected OgreHead mesh is not visible, changing to head number " << selected_head << std::endl;
-				change_current_mesh();
-			}
-		}
-		else
-		{
-			std::cerr << "You must have 1 ogrehead" << std::endl;
-		}
-		break;
-
 	case SDLK_INSERT:
 		// Lock vertex buffer to get pointer of current vertex
 
@@ -141,7 +128,7 @@ bool TutorialApplication::keyPressed(const KeyboardEvent &evt)
 	case SDLK_DELETE:
 		// Lock vertex buffer to get pointer of current vertex
 		pVertexPtr = static_cast<uint8 *>(mVertexBufPos[mCurrSubMesh]->lock(HardwareBuffer::LockOptions::HBL_NORMAL));
-		pVertexPtr += mCurrVertex * mVertexBufPos[mCurrSubMesh]->getVertexSize();
+		pVertexPtr += (mCurrVertex + 0) * mVertexBufPos[mCurrSubMesh]->getVertexSize();
 		mVertexElePos[mCurrSubMesh]->baseVertexPointerToElement(pVertexPtr, &pElePtr);
 
 		// Decrement x, y, z coordinates of current vertex
@@ -155,34 +142,6 @@ bool TutorialApplication::keyPressed(const KeyboardEvent &evt)
 
 	if (!BaseApplication::keyPressed(evt))
 		return false;
-}
-//-------------------------------------------------------------------------------------
-void TutorialApplication::createScene(void)
-{
-	// Create entities
-	ogre_heads.push_back(mSceneMgr->createEntity("Head" + std::to_string(0), "ogrehead.mesh"));
-	head_nodes.push_back(mSceneMgr->getRootSceneNode()->createChildSceneNode("HeadNode" + std::to_string(0)));
-
-	for (int i = 1; i <= 7; i++)
-	{
-		auto new_mesh = ogre_heads[0]->getMesh()->clone("Head_mesh_" + std::to_string(i));
-		ogre_heads.push_back(mSceneMgr->createEntity("Head" + std::to_string(i), new_mesh));
-		head_nodes.push_back(mSceneMgr->getRootSceneNode()->createChildSceneNode("HeadNode" + std::to_string(i)));
-	}
-
-	head_nodes[0]->attachObject(ogre_heads[0]);
-	head_nodes[0]->translate(Vector3(20, 0, 0));
-
-	change_current_mesh();
-
-	// Set the scene's ambient light
-	mSceneMgr->setAmbientLight(ColourValue(0.5, 0.5, 0.5));
-
-	// Create a light and set its position
-	Light *light = mSceneMgr->createLight("MainLight");
-	SceneNode *lightNode = mSceneMgr->getRootSceneNode()->createChildSceneNode("LightNode");
-	lightNode->attachObject(light);
-	lightNode->setPosition(20, 80, 50);
 }
 
 //-------------------------------------------------------------------------------------

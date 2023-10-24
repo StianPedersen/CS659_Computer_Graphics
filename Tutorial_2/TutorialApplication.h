@@ -39,21 +39,16 @@ class TutorialApplication : public BaseApplication
 public:
     TutorialApplication();
     virtual ~TutorialApplication();
-    bool keyPressed(const KeyboardEvent &evt);
-    void change_current_mesh();
-
-    int count, selected_head;
-    std::vector<Entity *> ogre_heads;
-    std::vector<SceneNode *> head_nodes;
-    std::vector<MeshPtr *> mesh_list;
 
 protected:
-    virtual void createScene(void);
-    int mCurrSubMesh, mCurrVertex;
+	virtual void createScene(void);
+	virtual bool keyPressed(const KeyboardEvent &evt);
 
-    MeshPtr mMesh;
-    std::vector<const VertexElement *> mVertexElePos;
-    std::vector<HardwareVertexBufferSharedPtr> mVertexBufPos;
+	int mCurrSubMesh, mCurrVertex;
+
+	MeshPtr mMesh;
+	std::vector< const VertexElement * > mVertexElePos;
+	std::vector< HardwareVertexBufferSharedPtr > mVertexBufPos;
 };
 
 #endif // __TutorialApplication_h_
