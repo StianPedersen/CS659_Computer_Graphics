@@ -29,9 +29,10 @@ THE SOFTWARE
 #include "TutorialApplication.h"
 
 //-------------------------------------------------------------------------------------
-TutorialApplication::TutorialApplication()
+TutorialApplication::TutorialApplication() : mCurrSubMesh(0),
+											 mCurrVertex(0),
+											 mMesh(nullptr)
 {
-	count = 1;
 }
 
 //-------------------------------------------------------------------------------------
@@ -39,50 +40,29 @@ TutorialApplication::~TutorialApplication(void)
 {
 }
 
-bool TutorialApplication::keyPressed(const KeyboardEvent &evt)
-{
-	if (evt.keysym.sym == SDLK_F1)
-	{
-		if (count <= 7)
-		{
-			head_nodes[count]->attachObject(ogre_heads[count]);
-			head_nodes[count]->translate(Vector3(20 + (count * 10), 0, 0));
-			++count;
-		}
-		else
-		{
-			std::cerr << "To many heads, only 8 on the same time" << std::endl;
-		}
-	}
-	if (evt.keysym.sym == SDLK_F2)
-	{
-		if (count > 1)
-		{
-			--count;
-			head_nodes[count]->detachObject(ogre_heads[count]);
-		}
-		else
-		{
-			std::cerr << "You must haae 1 ogrehead" << std::endl;
-		}
-	}
-	std::cout << "Count: " << count << std::endl;
-	return true;
-}
 //-------------------------------------------------------------------------------------
 void TutorialApplication::createScene(void)
 {
+	// Create your scene here :)
 	// Create entities
+	Entity *ogreHead = mSceneMgr->createEntity("Head", "ogrehead.mesh");
 
-	for (int i = 0; i <= 7; i++)
-	{
-		ogre_heads.push_back(mSceneMgr->createEntity("Head" + std::to_string(i), "ogrehead.mesh"));
-		head_nodes.push_back(mSceneMgr->getRootSceneNode()->createChildSceneNode("HeadNode" + std::to_string(i)));
-	}
-	std::cout << ogre_heads.size() << std::endl;
-	head_nodes[0]->attachObject(ogre_heads[0]);
+	// Create SceneNodes and attach the entities to them
+	SceneNode *headNode = mSceneMgr->getRootSceneNode()->createChildSceneNode("HeadNode");
+	headNode->attachObject(ogreHead);
 
-	head_nodes[0]->translate(Vector3(20, 0, 0));
+	// Get vertex position element for each sub-mesh
+	mMesh = ogreHead->getMesh();
+	int nSubMesh = mMesh->getNumSubMeshes();
+
+	mVertexElePos.resize(nSubMesh, nullptr);
+	for (int nMesh = 0; nMesh < nSubMesh; ++nMesh)
+		mVertexElePos[nMesh] = mMesh->getSubMesh(nMesh)->vertexData->vertexDeclaration->findElementBySemantic(VES_POSITION);
+
+	// Get vertex buffer for each sub-mesh
+	mVertexBufPos.resize(nSubMesh, nullptr);
+	for (int nMesh = 0; nMesh < nSubMesh; ++nMesh)
+		mVertexBufPos[nMesh] = mMesh->getSubMesh(nMesh)->vertexData->vertexBufferBinding->getBuffer(mVertexElePos[nMesh]->getSource());
 
 	// Set the scene's ambient light
 	mSceneMgr->setAmbientLight(ColourValue(0.5, 0.5, 0.5));
@@ -92,6 +72,62 @@ void TutorialApplication::createScene(void)
 	SceneNode *lightNode = mSceneMgr->getRootSceneNode()->createChildSceneNode("LightNode");
 	lightNode->attachObject(light);
 	lightNode->setPosition(20, 80, 50);
+}
+
+//-------------------------------------------------------------------------------------
+bool TutorialApplication::keyPressed(const KeyboardEvent &evt)
+{
+	uint8 *pVertexPtr = nullptr;
+	float *pElePtr = nullptr;
+
+	switch (evt.keysym.sym)
+	{
+	case 'm':
+		// Increment current sub-mesh index
+		if (mMesh)
+		{
+			int nSubMesh = mMesh->getNumSubMeshes();
+			if (mCurrSubMesh < (nSubMesh - 1))
+				++mCurrSubMesh;
+			else
+				mCurrSubMesh = 0;
+
+			printf("The current sub-mesh index is \"%i\".\n", mCurrSubMesh);
+		}
+		break;
+
+	case SDLK_DELETE:
+		// Lock vertex buffer to get pointer of current vertex
+
+		pVertexPtr = static_cast<uint8 *>(mVertexBufPos[mCurrSubMesh]->lock(HardwareBuffer::LockOptions::HBL_NORMAL));
+		pVertexPtr += mCurrVertex * mVertexBufPos[mCurrSubMesh]->getVertexSize();
+		mVertexElePos[mCurrSubMesh]->baseVertexPointerToElement(pVertexPtr, &pElePtr);
+
+		// Increment x, y, z coordinates of current vertex
+		pElePtr[0] += 1.0f;
+		pElePtr[1] += 1.0f;
+		pElePtr[2] += 1.0f;
+
+		mVertexBufPos[mCurrSubMesh]->unlock();
+		break;
+
+	case SDLK_INSERT:
+		// Lock vertex buffer to get pointer of current vertex
+		pVertexPtr = static_cast<uint8 *>(mVertexBufPos[mCurrSubMesh]->lock(HardwareBuffer::LockOptions::HBL_NORMAL));
+		pVertexPtr += mCurrVertex * mVertexBufPos[mCurrSubMesh]->getVertexSize();
+		mVertexElePos[mCurrSubMesh]->baseVertexPointerToElement(pVertexPtr, &pElePtr);
+
+		// Decrement x, y, z coordinates of current vertex
+		pElePtr[0] -= 1.0f;
+		pElePtr[1] -= 1.0f;
+		pElePtr[2] -= 1.0f;
+
+		mVertexBufPos[mCurrSubMesh]->unlock();
+		break;
+	}
+
+	if (!BaseApplication::keyPressed(evt))
+		return false;
 }
 
 //-------------------------------------------------------------------------------------
