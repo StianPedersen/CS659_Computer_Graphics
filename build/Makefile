@@ -117,32 +117,6 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named 0_Bootstrap
-
-# Build rule for target.
-0_Bootstrap: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 0_Bootstrap
-.PHONY : 0_Bootstrap
-
-# fast build rule for target.
-0_Bootstrap/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/0_Bootstrap.dir/build.make CMakeFiles/0_Bootstrap.dir/build
-.PHONY : 0_Bootstrap/fast
-
-#=============================================================================
-# Target rules for targets named Tutorial_2
-
-# Build rule for target.
-Tutorial_2: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Tutorial_2
-.PHONY : Tutorial_2
-
-# fast build rule for target.
-Tutorial_2/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tutorial_2.dir/build.make CMakeFiles/Tutorial_2.dir/build
-.PHONY : Tutorial_2/fast
-
-#=============================================================================
 # Target rules for targets named a.out
 
 # Build rule for target.
@@ -171,36 +145,6 @@ src/BaseApplication.s:
 .PHONY : src/BaseApplication.s
 
 # target to build an object file
-src/BasicTutorial_2.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tutorial_2.dir/build.make CMakeFiles/Tutorial_2.dir/src/BasicTutorial_2.o
-.PHONY : src/BasicTutorial_2.o
-
-# target to preprocess a source file
-src/BasicTutorial_2.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tutorial_2.dir/build.make CMakeFiles/Tutorial_2.dir/src/BasicTutorial_2.i
-.PHONY : src/BasicTutorial_2.i
-
-# target to generate assembly for a file
-src/BasicTutorial_2.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tutorial_2.dir/build.make CMakeFiles/Tutorial_2.dir/src/BasicTutorial_2.s
-.PHONY : src/BasicTutorial_2.s
-
-# target to build an object file
-src/Bootstrap.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/0_Bootstrap.dir/build.make CMakeFiles/0_Bootstrap.dir/src/Bootstrap.o
-.PHONY : src/Bootstrap.o
-
-# target to preprocess a source file
-src/Bootstrap.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/0_Bootstrap.dir/build.make CMakeFiles/0_Bootstrap.dir/src/Bootstrap.i
-.PHONY : src/Bootstrap.i
-
-# target to generate assembly for a file
-src/Bootstrap.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/0_Bootstrap.dir/build.make CMakeFiles/0_Bootstrap.dir/src/Bootstrap.s
-.PHONY : src/Bootstrap.s
-
-# target to build an object file
 src/TutorialApplication.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/a.out.dir/build.make CMakeFiles/a.out.dir/src/TutorialApplication.o
 .PHONY : src/TutorialApplication.o
@@ -223,18 +167,10 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... 0_Bootstrap"
-	@echo "... Tutorial_2"
 	@echo "... a.out"
 	@echo "... src/BaseApplication.o"
 	@echo "... src/BaseApplication.i"
 	@echo "... src/BaseApplication.s"
-	@echo "... src/BasicTutorial_2.o"
-	@echo "... src/BasicTutorial_2.i"
-	@echo "... src/BasicTutorial_2.s"
-	@echo "... src/Bootstrap.o"
-	@echo "... src/Bootstrap.i"
-	@echo "... src/Bootstrap.s"
 	@echo "... src/TutorialApplication.o"
 	@echo "... src/TutorialApplication.i"
 	@echo "... src/TutorialApplication.s"

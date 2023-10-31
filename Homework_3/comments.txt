@@ -1,0 +1,6 @@
+- A public member function  change_current_mesh() was added to reduce code duplication.
+- Vertexes can be incremented into infinity. Not sure if it should be restricted since there
+  is no information about it in the lab description.
+- Insert and Delete instead of '+' and '-' due to the lack of a numpad :)
+- If a ogrehead is removed and the currently selected ogrehead mesh is the removed one 
+  the selected ogrehead will move to the last ogrehead

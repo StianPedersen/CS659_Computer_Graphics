@@ -47,7 +47,5 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "CMakeFiles/0_Bootstrap.dir/DependInfo.cmake"
-  "CMakeFiles/Tutorial_2.dir/DependInfo.cmake"
   "CMakeFiles/a.out.dir/DependInfo.cmake"
   )
