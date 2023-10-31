@@ -1,0 +1,21 @@
+Due to the insufficient amount of keys these keyboard keys were chosen:
+    - 'p' : Select the position (default).
+    - 'o' : Select the direction.
+    - 'i' : Select the range.
+    - 'l' : Select the specular.
+    - 'k' : Select the diffusion.
+
+These keys were chosen to change the values.
+    - 'x' : Change the first value.
+    - 'y' : Change the second value.
+    - 'z' : Change the third value.
+NB! : 'z' Selects BOTH the inner and outer value for the range.
+
+These keys were chosen to increment/decrement the values:
+    - '1' : Increment the value.
+    - '2' : Decrement the value.
+
+Notes:
+    - This could have been done using ENUMS or some other
+    suitable datatype instead of many boolean operations. 
+    Decided that boolean flags simplicity was preffered. 
