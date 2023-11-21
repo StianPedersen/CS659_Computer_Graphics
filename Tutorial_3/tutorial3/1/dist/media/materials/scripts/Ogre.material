@@ -13,7 +13,7 @@ material Ogre/Earring
 				colour_op_ex add src_texture src_current
 				colour_op_multipass_fallback one one
 				env_map spherical
-			}
+			}sp
 		}
 	}
 }

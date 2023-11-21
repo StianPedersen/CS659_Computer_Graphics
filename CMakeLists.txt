@@ -3,7 +3,7 @@
 find_package(OGRE REQUIRED COMPONENTS Bites CONFIG)
  
 # add the source files as usual
-add_executable(a.out src/BaseApplication.cpp src/BaseApplication.h src/TutorialApplication.cpp src/TutorialApplication.h)
+add_executable(lab src/BaseApplication.cpp src/BaseApplication.h src/TutorialApplication.cpp src/TutorialApplication.h)
 
 # this also sets the includes and pulls third party dependencies
-target_link_libraries(a.out OgreBites)
+target_link_libraries(lab OgreBites)

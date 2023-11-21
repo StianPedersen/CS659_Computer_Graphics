@@ -1,0 +1,5 @@
+- The only file edited is Ogre.material
+    - Added specular to Ogre/Earring, Ogre/Skin, Ogre/Tusks and Ogre/Eyes
+    - Added additional texture to  Ogre/Skin
+- The texture added is brick.jpg, included in the zip
+- Reference image added "HW_5_Image.jpg"

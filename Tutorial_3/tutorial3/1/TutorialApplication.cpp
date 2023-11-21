@@ -28,30 +28,27 @@ THE SOFTWARE
 
 #include "TutorialApplication.h"
 
-
 //-------------------------------------------------------------------------------------
 TutorialApplication::TutorialApplication()
 {
 }
-
 
 //-------------------------------------------------------------------------------------
 TutorialApplication::~TutorialApplication(void)
 {
 }
 
-
 //-------------------------------------------------------------------------------------
 void TutorialApplication::createScene(void)
 {
 	// Create your scene here :)
 	// Create entities
-	Entity* ogreHead1 = mSceneMgr->createEntity("Head1", "ogrehead.mesh");
-	Entity* ogreHead2 = mSceneMgr->createEntity("Head2", "ogrehead.mesh");
+	Entity *ogreHead1 = mSceneMgr->createEntity("Head1", "ogrehead.mesh");
+	Entity *ogreHead2 = mSceneMgr->createEntity("Head2", "ogrehead.mesh");
 
 	// Create SceneNodes and attach the entities to them
-	SceneNode* headNode1 = mSceneMgr->getRootSceneNode()->createChildSceneNode("HeadNode1");
-	SceneNode* headNode2 = mSceneMgr->getRootSceneNode()->createChildSceneNode("HeadNode2");
+	SceneNode *headNode1 = mSceneMgr->getRootSceneNode()->createChildSceneNode("HeadNode1");
+	SceneNode *headNode2 = mSceneMgr->getRootSceneNode()->createChildSceneNode("HeadNode2");
 	headNode1->attachObject(ogreHead1);
 	headNode2->attachObject(ogreHead2);
 
@@ -68,30 +65,29 @@ void TutorialApplication::createScene(void)
 	mSceneMgr->setAmbientLight(ColourValue(0.5, 0.5, 0.5));
 
 	// Create a light and set its position
-	Light* light = mSceneMgr->createLight("MainLight");
+	Light *light = mSceneMgr->createLight("MainLight");
 	light->setSpecularColour(ColourValue::White);
 
-	SceneNode* lightNode = mSceneMgr->getRootSceneNode()->createChildSceneNode("LightNode");
+	SceneNode *lightNode = mSceneMgr->getRootSceneNode()->createChildSceneNode("LightNode");
 	lightNode->attachObject(light);
 	lightNode->setPosition(20, 80, 50);
 }
 
-
 //-------------------------------------------------------------------------------------
 int main(int argc, char **argv)
 {
-    try
-    {
-    	TutorialApplication app;
-        app.initApp();
+	try
+	{
+		TutorialApplication app;
+		app.initApp();
 		app.go();
-        app.closeApp();
-    }
-    catch (const std::exception& e)
-    {
-        std::cerr << "Error occurred during execution: " << e.what() << '\n';
-        return 1;
-    }
+		app.closeApp();
+	}
+	catch (const std::exception &e)
+	{
+		std::cerr << "Error occurred during execution: " << e.what() << '\n';
+		return 1;
+	}
 
-    return 0;
+	return 0;
 }
