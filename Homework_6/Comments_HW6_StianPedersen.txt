@@ -1,0 +1,14 @@
+Finished lab 6 Stian Lockhart Pedersen
+
+Implemented ->
+    - Run Forward & backward: Added 'i' and 'k' keys to the running mechanics code. Note that only
+    one direction can be ran at the same time. This is implemeted by checking that only 1 of 4 mPressKeySet
+    is pressed.
+
+    - SliceVertical & SliceHorizontal: SliceVertical is the 'o' key and SliceHorizontal is the 'u' key. The
+    attacks can only be done whilst the swords are drawn, checked by the variable mSwordAtHand variable.
+
+    - Jump: Jumping is done by pressing SPACE. First the jumpstart event is performed, when this is done the
+    jumploop event is performed. In this loop an accumulated time is calculated and the first half of the time 
+    SinBad will be jumping up and the second part of the accumulated time he will fall. At last the jumpend
+    event will be performed.

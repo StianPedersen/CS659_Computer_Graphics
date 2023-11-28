@@ -263,6 +263,7 @@ bool TutorialApplication::frameRenderingQueued(const FrameEvent &evt)
 	else if (mJumpLoop->getEnabled())
 	{
 		acc_time += evt.timeSinceLastFrame;
+		std::cout << acc_time << std::endl;
 		if (mJumpLoop->hasEnded())
 		{
 			mJumpLoop->setEnabled(false);
@@ -323,6 +324,7 @@ bool TutorialApplication::frameRenderingQueued(const FrameEvent &evt)
 
 	else if (mPressKeySet.count(SDLK_SPACE) != 0)
 	{
+		// JUMP
 		mJumpStart->setEnabled(true);
 		mJumpStart->addTime(evt.timeSinceLastFrame);
 	}
