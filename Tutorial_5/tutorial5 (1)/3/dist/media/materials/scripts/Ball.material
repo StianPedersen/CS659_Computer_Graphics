@@ -1,0 +1,103 @@
+vertex_program BallVert glsl
+{
+	source Ball.vert
+}
+
+fragment_program BallFrag glsl
+{
+	source Ball.frag
+}
+
+material BallBase
+{
+	technique
+	{
+		pass
+		{
+			ambient 0.8 0.8 0.8
+			diffuse 0.9 0.9 0.9
+			specular 0.7 0.7 0.7 64
+
+			vertex_program_ref BallVert
+			{
+				param_named_auto mWorldViewProjMatrix worldviewproj_matrix
+				param_named_auto mTextureMatrix texture_matrix 1
+			}
+
+			fragment_program_ref BallFrag
+			{
+				param_named_auto vLightAmbient ambient_light_colour
+				param_named_auto vCameraPosition camera_position_object_space
+
+				param_named_auto vLightPosition light_position_object_space 0
+				param_named_auto vLightDiffuse light_diffuse_colour 0
+				param_named_auto vLightSpecular light_specular_colour 0
+				param_named_auto vLightAttenuation light_attenuation 0
+
+				param_named_auto vSurfEmissive surface_emissive_colour
+				param_named_auto vSurfAmbient surface_ambient_colour
+				param_named_auto vSurfDiffuse surface_diffuse_colour
+				param_named_auto vSurfSpecular surface_specular_colour
+				param_named_auto fSurfShininess surface_shininess
+			
+				param_named sBallTex int 0
+				param_named sStainTex int 1
+			}
+
+			texture_unit 0
+			{
+				texture_alias BallMap
+			}
+
+			texture_unit 1
+			{
+				texture stain.jpg
+				scale 0.25 0.25
+				tex_address_mode clamp				
+			}
+		}
+	}
+}
+
+material Ball1 : BallBase
+{
+	set_texture_alias BallMap ball_1.ppm
+}
+
+material Ball2 : BallBase
+{
+	set_texture_alias BallMap ball_2.ppm
+}
+
+material Ball3 : BallBase
+{
+	set_texture_alias BallMap ball_3.ppm
+}
+
+material Ball4 : BallBase
+{
+	set_texture_alias BallMap ball_4.ppm
+}
+
+material Ball5 : BallBase
+{
+	set_texture_alias BallMap ball_5.ppm
+}
+
+material Ball6 : BallBase
+{
+	set_texture_alias BallMap ball_6.ppm
+}
+
+material Ball7 : BallBase
+{
+	set_texture_alias BallMap ball_7.ppm
+}
+material Ball8 : BallBase
+{
+	set_texture_alias BallMap ball_8.ppm
+}
+material Ball9 : BallBase
+{
+	set_texture_alias BallMap ball_9.ppm
+}

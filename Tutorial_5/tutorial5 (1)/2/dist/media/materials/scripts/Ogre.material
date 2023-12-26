@@ -1,0 +1,94 @@
+vertex_program OgreSkinVert glsl
+{
+	source OgreSkin.vert
+}
+
+fragment_program OgreSkinFrag glsl
+{
+	source OgreSkin.frag
+}
+
+material Ogre/Earring
+{
+	technique
+	{
+		pass
+		{
+			ambient 0.7 0.7 0
+			diffuse 0.7 0.7 0
+
+			texture_unit
+			{
+				texture spheremap.png
+				colour_op_ex add src_texture src_current
+				colour_op_multipass_fallback one one
+				env_map spherical
+			}
+		}
+	}
+}
+
+material Ogre/Skin
+{
+	technique
+	{
+		pass
+		{
+			ambient 0.3 0.8 0.3
+
+			texture_unit
+			{
+				texture GreenSkin.jpg
+				tex_address_mode mirror
+			}
+
+			vertex_program_ref OgreSkinVert
+			{
+				param_named_auto mWorldViewProjMatrix worldviewproj_matrix
+			}
+
+			fragment_program_ref OgreSkinFrag
+			{
+				param_named_auto vLightAmbient ambient_light_colour
+
+				param_named_auto vLightPosition light_position_object_space 0
+				param_named_auto vLightDiffuse light_diffuse_colour 0
+
+				param_named_auto vSurfAmbient surface_ambient_colour
+				param_named_auto vSurfDiffuse surface_diffuse_colour
+			
+				param_named sSkinTex int 0
+			}
+		}
+	}
+}
+
+material Ogre/Tusks
+{
+	technique
+	{
+		pass
+		{
+			ambient 0.7 0.7 0.6
+
+			texture_unit
+			{
+				texture tusk.jpg
+				scale 0.2 0.2
+			}
+		}
+	}
+}
+
+material Ogre/Eyes
+{
+	technique
+	{
+		pass
+		{
+			ambient 1 0.4 0.4
+			diffuse 1 0.7 0
+			emissive 0.3 0.1 0
+		}
+	}
+}

@@ -28,15 +28,18 @@ THE SOFTWARE
 
 #include "TutorialApplication.h"
 
+
 //-------------------------------------------------------------------------------------
 TutorialApplication::TutorialApplication()
 {
 }
 
+
 //-------------------------------------------------------------------------------------
 TutorialApplication::~TutorialApplication(void)
 {
 }
+
 
 //-------------------------------------------------------------------------------------
 void TutorialApplication::createCamera(void)
@@ -46,15 +49,16 @@ void TutorialApplication::createCamera(void)
 	mCameraNode->setPosition(0, 0, 5000);
 }
 
+
 //-------------------------------------------------------------------------------------
 void TutorialApplication::createScene(void)
 {
 	// Create your scene here :)
-	Entity *ogreBall[9];
-	SceneNode *ballNode[9];
+	Entity* ogreBall[9];
+	SceneNode* ballNode[9];
 	String ballString[9];
 
-	for (int i = 0; i < 9; ++i)
+	for( int i = 0; i < 9; ++i )
 	{
 		StringStream ballSteam;
 		ballSteam << (i + 1);
@@ -65,7 +69,7 @@ void TutorialApplication::createScene(void)
 		ogreBall[i]->setMaterialName(ballString[i]);
 
 		// Create SceneNodes and attach the entities to them
-		if (i == 0)
+		if( i == 0 )
 		{
 			ballNode[i] = mSceneMgr->getRootSceneNode()->createChildSceneNode(ballString[i]);
 			ballNode[i]->rotate(Vector3(0, 0, 1), Degree(30));
@@ -73,11 +77,11 @@ void TutorialApplication::createScene(void)
 		}
 		else
 		{
-			ballNode[i] = ballNode[i - 1]->createChildSceneNode(ballString[i]);
+			ballNode[i] = ballNode[i-1]->createChildSceneNode(ballString[i]);
 
 			// Set transformations
 			ballNode[i]->rotate(Vector3(0, 0, 1), Degree(30));
-			ballNode[i]->translate(Vector3(500 + i * 100, 0, 0));
+			ballNode[i]->translate(Vector3(500+i*100, 0, 0));
 		}
 
 		ballNode[i]->attachObject(ogreBall[i]);
@@ -87,32 +91,30 @@ void TutorialApplication::createScene(void)
 	mSceneMgr->setAmbientLight(ColourValue(0.5, 0.5, 0.5));
 
 	// Create a light and set its position
-	Light *light = mSceneMgr->createLight("MainLight");
+	Light* light = mSceneMgr->createLight("MainLight");
 	light->setSpecularColour(ColourValue::White);
-	light->setType(Light::LT_SPOTLIGHT);
-	light->setSpotlightRange(Degree(90), Degree(30));
 
-	SceneNode *lightNode = mSceneMgr->getRootSceneNode()->createChildSceneNode("LightNode");
+	SceneNode* lightNode = mSceneMgr->getRootSceneNode()->createChildSceneNode("LightNode");
 	lightNode->attachObject(light);
 	lightNode->setPosition(1000, 4000, 2500);
-	lightNode->setDirection(-1, -1, -1);
 }
+
 
 //-------------------------------------------------------------------------------------
 int main(int argc, char **argv)
 {
-	try
-	{
-		TutorialApplication app;
-		app.initApp();
+    try
+    {
+    	TutorialApplication app;
+        app.initApp();
 		app.go();
-		app.closeApp();
-	}
-	catch (const std::exception &e)
-	{
-		std::cerr << "Error occurred during execution: " << e.what() << '\n';
-		return 1;
-	}
+        app.closeApp();
+    }
+    catch (const std::exception& e)
+    {
+        std::cerr << "Error occurred during execution: " << e.what() << '\n';
+        return 1;
+    }
 
-	return 0;
+    return 0;
 }
